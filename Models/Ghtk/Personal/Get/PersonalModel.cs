@@ -4,7 +4,7 @@ using AutoMapper;
 
 #region GHTK
 // Paramters
-using GhtkCore.Parameters.Ghtk;
+using GhtkCore.Models.Ghtk;
 #endregion
 
 namespace GhtkCore.Models.Ghtk
@@ -22,16 +22,16 @@ namespace GhtkCore.Models.Ghtk
     public string email { get; set; }
 
     #region Map
-    public static PersonalModel map(PersonalParameter source)
+    public static PersonalModel map(PersonalFilterModel source)
     {
       #region Config
       var config = new MapperConfiguration(cfg =>
-        cfg.CreateMap<PersonalParameter, PersonalModel>()
+        cfg.CreateMap<PersonalFilterModel, PersonalModel>()
       );
       var mapper = new Mapper(config);
       #endregion
 
-      return mapper.Map<PersonalParameter, PersonalModel>(source);
+      return mapper.Map<PersonalFilterModel, PersonalModel>(source);
     }
     #endregion
   }

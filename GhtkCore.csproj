@@ -14,45 +14,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Models\Common\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Interfaces\Models\" />
     <Folder Include="Interfaces\Models\Common\" />
-    <Folder Include="Services\" />
     <Folder Include="Interfaces\Services\" />
-    <Folder Include="Parameters\" />
-    <Folder Include="Services\Ghtk\" />
-    <Folder Include="Utils\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\Common\" />
     <Folder Include="Models\Ghtk\" />
     <Folder Include="Models\Ghtk\Fee\" />
+    <Folder Include="Models\Ghtk\Fee\Filter\" />
+    <Folder Include="Models\Ghtk\Fee\Get\" />
     <Folder Include="Models\Ghtk\Personal\" />
-    <Folder Include="Parameters\Ghtk\" />
-    <Folder Include="Parameters\Ghtk\Fee\" />
-    <Folder Include="Parameters\Ghtk\Personal\" />
+    <Folder Include="Models\Ghtk\Personal\Get\" />
+    <Folder Include="Models\Ghtk\Personal\Filter\" />
+    <Folder Include="Services\" />
     <Folder Include="Services\Abstract\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Newtonsoft.Json" />
-    <None Remove="Models\Common\" />
-    <None Remove="Interfaces\" />
-    <None Remove="Interfaces\Models\" />
-    <None Remove="Interfaces\Models\Common\" />
-    <None Remove="Services\" />
-    <None Remove="Interfaces\Services\" />
-    <None Remove="Parameters\" />
-    <None Remove="Microsoft.Extensions.Configuration.UserSecrets" />
-    <None Remove="AutoMapper" />
-    <None Remove="Services\Ghtk\" />
-    <None Remove="Utils\" />
-    <None Remove="Models\Ghtk\" />
-    <None Remove="Models\Ghtk\Fee\" />
-    <None Remove="Models\Ghtk\Personal\" />
-    <None Remove="Parameters\Ghtk\" />
-    <None Remove="Parameters\Ghtk\Fee\" />
-    <None Remove="Parameters\Ghtk\Personal\" />
-    <None Remove="Microsoft.Extensions.Configuration" />
-    <None Remove="Microsoft.Extensions.Configuration.EnvironmentVariables" />
-    <None Remove="Services\Abstract\" />
+    <Folder Include="Services\Ghtk\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
 </Project>

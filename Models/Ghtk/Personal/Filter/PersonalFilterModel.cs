@@ -1,6 +1,6 @@
-namespace GhtkCore.Parameters.Ghtk
+namespace GhtkCore.Models.Ghtk
 {
-  public class PersonalParameter
+  public class PersonalFilterModel
   {
     public string warehouseCode { get; set; }
     public string contactName { get; set; }

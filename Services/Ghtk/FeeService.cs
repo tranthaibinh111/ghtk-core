@@ -28,9 +28,6 @@ using GhtkCore.Models.Common;
 #endregion
 
 #region GHTK
-// Parameters
-using GhtkCore.Parameters.Ghtk;
-
 // Models
 using GhtkCore.Models.Ghtk;
 
@@ -49,9 +46,9 @@ namespace GhtkCore.Services.Ghtk
     /// <summary>
     /// https://docs.giaohangtietkiem.vn/?http#t-nh-ph-v-n-chuy-n
     /// </summary>
-    /// <param name="parameters"></param>
+    /// <param name="filter"></param>
     /// <returns></returns>
-    public async Task<IResponseModel> getFee(FeeParameter parameters)
+    public async Task<IResponseModel> getFee(FeeFilterModel filter)
     {
       try
       {
@@ -66,44 +63,44 @@ namespace GhtkCore.Services.Ghtk
         var query = new Dictionary<string, dynamic>();
 
         // pick_address_id
-        if (!String.IsNullOrEmpty(parameters.pickAddressId))
-          query.Add("pick_address_id", parameters.pickAddressId);
+        if (!String.IsNullOrEmpty(filter.pickAddressId))
+          query.Add("pick_address_id", filter.pickAddressId);
         // pick_address
-        if (!String.IsNullOrEmpty(parameters.pickAddress))
-          query.Add("pick_address", Uri.EscapeDataString(parameters.pickAddress));
+        if (!String.IsNullOrEmpty(filter.pickAddress))
+          query.Add("pick_address", Uri.EscapeDataString(filter.pickAddress));
         // pick_province
-        query.Add("pick_province", Uri.EscapeDataString(parameters.pickProvince));
+        query.Add("pick_province", Uri.EscapeDataString(filter.pickProvince));
         // pick_district
-        query.Add("pick_district", Uri.EscapeDataString(parameters.pickDistrict));
+        query.Add("pick_district", Uri.EscapeDataString(filter.pickDistrict));
         // pick_ward
-        if (!String.IsNullOrEmpty(parameters.pickWard))
-          query.Add("pick_ward", Uri.EscapeDataString(parameters.pickWard));
+        if (!String.IsNullOrEmpty(filter.pickWard))
+          query.Add("pick_ward", Uri.EscapeDataString(filter.pickWard));
         // pick_street
-        if (!String.IsNullOrEmpty(parameters.pickStreet))
-          query.Add("pick_street", Uri.EscapeDataString(parameters.pickStreet));
+        if (!String.IsNullOrEmpty(filter.pickStreet))
+          query.Add("pick_street", Uri.EscapeDataString(filter.pickStreet));
         // address
-        if (!String.IsNullOrEmpty(parameters.address))
-          query.Add("address", Uri.EscapeDataString(parameters.address));
+        if (!String.IsNullOrEmpty(filter.address))
+          query.Add("address", Uri.EscapeDataString(filter.address));
         // province
-        query.Add("province", Uri.EscapeDataString(parameters.province));
+        query.Add("province", Uri.EscapeDataString(filter.province));
         // district
-        query.Add("district", Uri.EscapeDataString(parameters.district));
+        query.Add("district", Uri.EscapeDataString(filter.district));
         // ward
-        if (!String.IsNullOrEmpty(parameters.ward))
-          query.Add("ward", Uri.EscapeDataString(parameters.ward));
+        if (!String.IsNullOrEmpty(filter.ward))
+          query.Add("ward", Uri.EscapeDataString(filter.ward));
         // street
-        if (!String.IsNullOrEmpty(parameters.street) && parameters.street != parameters.address)
-          query.Add("ward", Uri.EscapeDataString(parameters.street));
+        if (!String.IsNullOrEmpty(filter.street) && filter.street != filter.address)
+          query.Add("ward", Uri.EscapeDataString(filter.street));
         // Weight
-        query.Add("weight", parameters.weight.Value);
+        query.Add("weight", filter.weight);
         // Value
-        if (parameters.value.HasValue)
-          query.Add("value", parameters.value.Value);
+        if (filter.value.HasValue)
+          query.Add("value", filter.value.Value);
         // Transport
-        if (!String.IsNullOrEmpty(parameters.transport))
-          query.Add("transport", parameters.transport);
+        if (!String.IsNullOrEmpty(filter.transport))
+          query.Add("transport", filter.transport);
         // Deliver option
-        query.Add("deliver_option", "none");
+        query.Add("deliver_option", filter.deliverOption);
 
         if (query.Count > 0)
           url += $"?{QueryHelpers.stringify(query)}";
