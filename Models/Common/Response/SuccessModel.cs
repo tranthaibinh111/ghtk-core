@@ -15,39 +15,20 @@ using GhtkCore.Models.Ghtk;
 
 namespace GhtkCore.Models.Common
 {
-  #region Error Response
-  /// <summary>
-  /// Error Response
-  /// { 'success': true, 'message': '' }
-  /// </summary>
-  public class ErrorModel : IResponseModel
-  {
-    public bool success { get; set; }
-    public string message { get; set; }
-
-    public ErrorModel()
-    {
-      success = false;
-    }
-  }
-  #endregion
-
-  #region Success Response
   /// <summary>
   /// Success Response
   /// { 'success': true, 'message': '', data: {} }
   /// </summary>
-  public class SuccessModel<T> : ErrorModel
+  public class SuccessModel<T> : IResponseModel
   {
+    public bool success { get; set; }
     public T data { get; set; }
 
     public SuccessModel(T data)
     {
       success = true;
-      message = String.Empty;
       this.data = data;
     }
   }
-  #endregion
 }
 

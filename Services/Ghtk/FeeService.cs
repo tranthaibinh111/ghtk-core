@@ -108,23 +108,23 @@ namespace GhtkCore.Services.Ghtk
         #endregion
         #endregion
 
-        IResponseModel result;
-
         #region Thực thi API KiotViet
-        var response = await _httpClient.GetAsync(url);
-        var parsed = await response.Content.ReadAsStringAsync();
+        var resp = await _httpClient.GetAsync(url);
+        var parsed = await resp.Content.ReadAsStringAsync();
+        var json = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(parsed);
+        var success = Convert.ToBoolean(json.GetValueOrDefault("success", false));
 
-        result = JsonConvert.DeserializeObject<ErrorModel>(parsed);
+        if (success == false)
+        {
+          var errMsg = Convert.ToString(json.GetValueOrDefault("message", String.Empty));
 
-        if (!result.success)
-          return result;
+          return new ErrorModel((string)errMsg);
+        }
         #endregion
 
         #region Tổng hợp dữ liệu
-        var json = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(parsed);
         var data = JsonConvert.DeserializeObject<FeeModel>(json["fee"].ToString());
-
-        result = new SuccessModel<FeeModel>(data);
+        var result = new SuccessModel<FeeModel>(data);
         #endregion
 
         return result;

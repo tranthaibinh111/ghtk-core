@@ -31,5 +31,9 @@
     <Folder Include="Services\Abstract\" />
     <Folder Include="Services\Ghtk\" />
     <Folder Include="Utils\" />
+    <Folder Include="Models\Common\Response\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Models\Common\Response\" />
   </ItemGroup>
 </Project>

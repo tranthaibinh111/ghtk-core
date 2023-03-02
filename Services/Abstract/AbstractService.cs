@@ -59,12 +59,6 @@ namespace GhtkCore.Services.Abstract
 
     #region Protected
     /// <summary>
-    /// Kiểm tra Token
-    /// </summary>
-    /// <returns></returns>
-    protected bool checkedToken() => !String.IsNullOrEmpty(token);
-
-    /// <summary>
     /// Thiết lập Header
     /// </summary>
     protected void setHeaders()
