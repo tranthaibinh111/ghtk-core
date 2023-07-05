@@ -32,8 +32,16 @@
     <Folder Include="Services\Ghtk\" />
     <Folder Include="Utils\" />
     <Folder Include="Models\Common\Response\" />
+    <Folder Include="Models\Ghtk\Order\" />
+    <Folder Include="Models\Ghtk\Order\Creation\" />
+    <Folder Include="Models\Ghtk\Product\" />
+    <Folder Include="Models\Ghtk\Product\Creation\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\Common\Response\" />
+    <None Remove="Models\Ghtk\Order\" />
+    <None Remove="Models\Ghtk\Order\Creation\" />
+    <None Remove="Models\Ghtk\Product\" />
+    <None Remove="Models\Ghtk\Product\Creation\" />
   </ItemGroup>
 </Project>

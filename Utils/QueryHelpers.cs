@@ -1,7 +1,7 @@
 #region DotNet
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 #endregion
 
 namespace GhtkCore.Utils
@@ -12,6 +12,9 @@ namespace GhtkCore.Utils
     {
       try
       {
+        // Trường hợp query rỗng
+        if (query.Count == 0) return String.Empty;
+
         var parameters = new List<string>();
 
         foreach (var item in query)
@@ -28,11 +31,14 @@ namespace GhtkCore.Utils
           parameters.Add(parameter);
         }
 
+        // Trường hợp parameters rỗng
+        if (parameters.Any()) return String.Empty;
+
         return String.Join('&', parameters);
       }
       catch (Exception ex)
       {
-        Console.WriteLine(ex);
+        Console.WriteLine(ex.Message);
 
         throw;
       }

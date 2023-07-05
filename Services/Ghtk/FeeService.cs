@@ -1,18 +1,11 @@
 #region DotNet
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 #endregion
 
 #region Package (third-party)
 using Newtonsoft.Json;
-#endregion
-
-#region Interface
-using GhtkCore.Interfaces.Services;
 #endregion
 
 #region Utils
@@ -33,7 +26,6 @@ using GhtkCore.Models.Ghtk;
 
 // Service
 using GhtkCore.Services.Abstract;
-using System.Reflection.PortableExecutable;
 #endregion
 
 namespace GhtkCore.Services.Ghtk
@@ -108,7 +100,7 @@ namespace GhtkCore.Services.Ghtk
         #endregion
         #endregion
 
-        #region Thực thi API KiotViet
+        #region Thực thi API Giao Hàng Tiết Kiệm
         var resp = await _httpClient.GetAsync(url);
         var parsed = await resp.Content.ReadAsStringAsync();
         var json = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(parsed);
@@ -131,7 +123,7 @@ namespace GhtkCore.Services.Ghtk
       }
       catch (Exception ex)
       {
-        Console.WriteLine(ex);
+        Console.WriteLine(ex.Message);
 
         throw;
       }
