@@ -23,21 +23,21 @@ namespace GhtkCore.Models.Ghtk
     public string street { get; set; }
     /// <summary>
     /// Requirement: True
-    /// 
+    /// <br />
     /// Cân nặng của gói hàng, đơn vị sử dụng Gram
     /// </summary>
     public int weight { get; set; }
     public int? value { get; set; }
     /// <summary>
     /// Requirement: False
-    /// 
+    /// <br />
     /// Phương thức vâng chuyển road ( bộ ) , fly (bay).
     /// Nếu phương thức vận chuyển không hợp lệ thì GHTK sẽ tự động nhảy về PTVC mặc định
     /// </summary>
     public string transport { get; set; }
     /// <summary>
     /// Requirement: True
-    /// 
+    /// <br />
     /// Sử dụng phương thức vận chuyển xfast. Nhận 1 trong 2 giá trị xteam/none
     /// </summary>
     public string deliverOption { get; set; }

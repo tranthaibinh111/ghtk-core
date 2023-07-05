@@ -18,9 +18,7 @@
     <Folder Include="Interfaces\Models\" />
     <Folder Include="Interfaces\Models\Common\" />
     <Folder Include="Interfaces\Services\" />
-    <Folder Include="Models\" />
     <Folder Include="Models\Common\" />
-    <Folder Include="Models\Ghtk\" />
     <Folder Include="Models\Ghtk\Fee\" />
     <Folder Include="Models\Ghtk\Fee\Filter\" />
     <Folder Include="Models\Ghtk\Fee\Get\" />
