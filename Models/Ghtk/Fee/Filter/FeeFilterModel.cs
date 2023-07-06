@@ -1,3 +1,7 @@
+#region DotNet
+using System;
+#endregion
+
 #region Package (third-party)
 using AutoMapper;
 #endregion
@@ -51,9 +55,17 @@ namespace GhtkCore.Models.Ghtk
       );
 
       var map = new Mapper(config);
+      var result = map.Map<T, FeeFilterModel>(source);
       #endregion
 
-      return map.Map<T, FeeFilterModel>(source);
+      #region Cập nhật các giá trị mặc định
+      /// Sử dụng phương thức vận chuyển xfast
+      /// Nhận 1 trong 2 giá trị xteam/none
+      if (String.IsNullOrEmpty(result.deliverOption))
+        result.deliverOption = "none";
+      #endregion
+
+      return result;
     }
     #endregion
   }

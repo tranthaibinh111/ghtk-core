@@ -46,6 +46,9 @@ namespace GhtkCore.Services.Abstract
 
       // HTTP Client
       _httpClient = new HttpClient();
+
+      // Base Address
+      _httpClient.BaseAddress = new Uri(domain);
     }
 
     ~AbstractGhtkService()

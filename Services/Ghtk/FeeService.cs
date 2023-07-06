@@ -49,50 +49,70 @@ namespace GhtkCore.Services.Ghtk
         setHeaders();
 
         #region Thiết lập URL
-        var url = $"{domain}/services/shipment/fee";
+        var url = "/services/shipment/fee";
 
         #region Query Parameters
         var query = new Dictionary<string, dynamic>();
 
-        // pick_address_id
+        #region Thông tin lấy hàng
+        // Địa điểm lấy hàng của shop trong trang quản lý đơn hàng dành cho khách hàng
         if (!String.IsNullOrEmpty(filter.pickAddressId))
           query.Add("pick_address_id", filter.pickAddressId);
-        // pick_address
+
+        // Địa chỉ ngắn gọn để lấy nhận hàng hóa
         if (!String.IsNullOrEmpty(filter.pickAddress))
           query.Add("pick_address", Uri.EscapeDataString(filter.pickAddress));
-        // pick_province
+
+        // Tên tỉnh/thành phố nơi lấy hàng hóa
         query.Add("pick_province", Uri.EscapeDataString(filter.pickProvince));
-        // pick_district
+
+        // Tên quận/huyện nơi lấy hàng hóa
         query.Add("pick_district", Uri.EscapeDataString(filter.pickDistrict));
-        // pick_ward
+
+        // Tên phường/xã nơi lấy hàng hóa
         if (!String.IsNullOrEmpty(filter.pickWard))
           query.Add("pick_ward", Uri.EscapeDataString(filter.pickWard));
-        // pick_street
+
+        // Tên đường/phố nơi lấy hàng hóa
         if (!String.IsNullOrEmpty(filter.pickStreet))
           query.Add("pick_street", Uri.EscapeDataString(filter.pickStreet));
-        // address
+        #endregion
+
+        #region Thông tin điểm giao hàng
+        // Địa chỉ chi tiết của người nhận hàng
         if (!String.IsNullOrEmpty(filter.address))
           query.Add("address", Uri.EscapeDataString(filter.address));
-        // province
+
+        // Tên tỉnh/thành phố của người nhận hàng hóa
         query.Add("province", Uri.EscapeDataString(filter.province));
-        // district
+
+        // Tên quận/huyện của người nhận hàng hóa
         query.Add("district", Uri.EscapeDataString(filter.district));
-        // ward
+
+        // Tên phường/xã của người nhận hàng hóa
         if (!String.IsNullOrEmpty(filter.ward))
           query.Add("ward", Uri.EscapeDataString(filter.ward));
-        // street
+
+        // Tên đường/phố của người nhận hàng hóa
         if (!String.IsNullOrEmpty(filter.street) && filter.street != filter.address)
-          query.Add("ward", Uri.EscapeDataString(filter.street));
-        // Weight
+          query.Add("street", Uri.EscapeDataString(filter.street));
+        #endregion
+
+        #region Các thông tin thêm
+        // Cân nặng của gói hàng
         query.Add("weight", filter.weight);
-        // Value
+
+        // Giá trị thực của đơn hàng áp dụng để tính phí bảo hiểm, đơn vị sử dụng
         if (filter.value.HasValue)
           query.Add("value", filter.value.Value);
-        // Transport
+
+        // Phương thức vâng chuyển
         if (!String.IsNullOrEmpty(filter.transport))
           query.Add("transport", filter.transport);
-        // Deliver option
+
+        // Phương thức vận chuyển xfast
         query.Add("deliver_option", filter.deliverOption);
+        #endregion
 
         if (query.Count > 0)
           url += $"?{QueryHelpers.stringify(query)}";
@@ -101,25 +121,22 @@ namespace GhtkCore.Services.Ghtk
         #endregion
 
         #region Thực thi API Giao Hàng Tiết Kiệm
-        var resp = await _httpClient.GetAsync(url);
-        var parsed = await resp.Content.ReadAsStringAsync();
-        var json = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(parsed);
-        var success = Convert.ToBoolean(json.GetValueOrDefault("success", false));
+        var httpResp = await _httpClient.GetAsync(url);
+        var parsed = await httpResp.Content.ReadAsStringAsync();
+        var resp = JsonConvert.DeserializeObject<FeeResponseModel>(parsed);
 
-        if (success == false)
+        if (!resp.success)
         {
-          var errMsg = Convert.ToString(json.GetValueOrDefault("message", String.Empty));
+          var errResp = resp.generateErrorResponse();
 
-          return new ErrorModel((string)errMsg);
+          return errResp;
         }
         #endregion
 
-        #region Tổng hợp dữ liệu
-        var data = JsonConvert.DeserializeObject<FeeModel>(json["fee"].ToString());
-        var result = new SuccessModel<FeeModel>(data);
-        #endregion
+        // Tổng hợp dữ liệu
+        var succesResp = resp.generateSuccessResponse();
 
-        return result;
+        return succesResp;
       }
       catch (Exception ex)
       {
