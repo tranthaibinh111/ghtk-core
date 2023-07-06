@@ -32,7 +32,7 @@ namespace GhtkCore.Utils
         }
 
         // Trường hợp parameters rỗng
-        if (parameters.Any()) return String.Empty;
+        if (!parameters.Any()) return String.Empty;
 
         return String.Join('&', parameters);
       }

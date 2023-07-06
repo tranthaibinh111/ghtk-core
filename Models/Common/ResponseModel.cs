@@ -19,41 +19,20 @@ namespace GhtkCore.Models.Common
   /// Success Response
   /// { 'success': true, 'message': '' }
   /// </summary>
-  public class SuccessModel : IResponseModel
+  public class ResponseModel : IResponseModel
   {
     public bool success { get; set; }
     public string message { get; set; }
 
-    public SuccessModel()
+    public ResponseModel()
     {
       success = true;
     }
 
-    public SuccessModel(string message)
+    public ResponseModel(string message)
     {
       success = true;
       this.message = message;
-    }
-  }
-
-  /// <summary>
-  /// Success Response
-  /// { 'success': true, data: {} }
-  /// </summary>
-  public class SuccessModel<T> : IResponseModel
-  {
-    public bool success { get; set; }
-    public T data { get; set; }
-
-    public SuccessModel()
-    {
-      success = true;
-    }
-
-    public SuccessModel(T data)
-    {
-      success = true;
-      this.data = data;
     }
   }
 }

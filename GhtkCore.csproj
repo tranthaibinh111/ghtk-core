@@ -14,11 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Interfaces\Models\" />
-    <Folder Include="Interfaces\Models\Common\" />
     <Folder Include="Interfaces\Services\" />
-    <Folder Include="Models\Common\" />
     <Folder Include="Models\Ghtk\Fee\" />
     <Folder Include="Models\Ghtk\Fee\Filter\" />
     <Folder Include="Models\Ghtk\Fee\Get\" />
@@ -29,7 +25,6 @@
     <Folder Include="Services\Abstract\" />
     <Folder Include="Services\Ghtk\" />
     <Folder Include="Utils\" />
-    <Folder Include="Models\Common\Response\" />
     <Folder Include="Models\Ghtk\Order\" />
     <Folder Include="Models\Ghtk\Order\Creation\" />
     <Folder Include="Models\Ghtk\Product\" />

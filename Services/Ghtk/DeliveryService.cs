@@ -44,7 +44,10 @@ namespace GhtkCore.Services.Ghtk
     /// <param name="order">Thông tin đăng ký giao hàng tiết kiệm</param>
     /// <param name="products">Thông tin danh sách sản phẩm giao hàng</param>
     /// <returns></returns>
-    public async Task<IResponseModel> registerDelivery(OrderCreationModel order, IList<ProductCreationModel> products)
+    public async Task<DeliveryResponseModel> registerDelivery(
+      OrderCreationModel order,
+      IList<ProductCreationModel> products
+    )
     {
       try
       {
@@ -82,19 +85,9 @@ namespace GhtkCore.Services.Ghtk
         var httpResp = await _httpClient.PostAsync(url, content);
         var parsed = await httpResp.Content.ReadAsStringAsync();
         var resp = JsonConvert.DeserializeObject<DeliveryResponseModel>(parsed);
-
-        if (!resp.success)
-        {
-          var errResp = resp.generateErrorResponse();
-
-          return errResp;
-        }
         #endregion
 
-        // Tổng hợp dữ liệu
-        var succesResp = resp.generateSuccessResponse();
-
-        return succesResp;
+        return resp;
       }
       catch (Exception ex)
       {
@@ -119,7 +112,7 @@ namespace GhtkCore.Services.Ghtk
         #region Thực thi API Giao Hàng Tiết Kiệm
         var httpResp = await _httpClient.PostAsync(url, null);
         var parsed = await httpResp.Content.ReadAsStringAsync();
-        var resp = JsonConvert.DeserializeObject<SuccessModel>(parsed);
+        var resp = JsonConvert.DeserializeObject<ResponseModel>(parsed);
         #endregion
 
         return resp;

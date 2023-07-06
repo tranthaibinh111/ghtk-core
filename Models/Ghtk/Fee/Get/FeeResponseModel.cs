@@ -8,46 +8,15 @@ using Newtonsoft.Json;
 
 #region Common
 using GhtkCore.Models.Common;
+using GhtkCore.Interfaces.Models.Common;
 #endregion
 
 namespace GhtkCore.Models.Ghtk
 {
-  public class FeeResponseModel : SuccessModel
+  public class FeeResponseModel : ResponseModel, ISuccessResponse<FeeModel>, IErrorResponse
   {
     [JsonProperty(PropertyName = "fee")]
     public FeeModel data { get; set; }
-
-    #region Generates
-    public ErrorModel generateErrorResponse()
-    {
-      try
-      {
-        var resp = new ErrorModel(message);
-
-        return resp;
-      }
-      catch (System.Exception ex)
-      {
-        Console.WriteLine(ex.Message);
-        throw;
-      }
-    }
-
-    public SuccessModel<FeeModel> generateSuccessResponse()
-    {
-      try
-      {
-        var resp = new SuccessModel<FeeModel>(data);
-
-        return resp;
-      }
-      catch (System.Exception ex)
-      {
-        Console.WriteLine(ex.Message);
-        throw;
-      }
-    }
-    #endregion
   }
 }
 

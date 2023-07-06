@@ -40,7 +40,7 @@ namespace GhtkCore.Services.Ghtk
     /// </summary>
     /// <param name="filter"></param>
     /// <returns></returns>
-    public async Task<IResponseModel> getFee(FeeFilterModel filter)
+    public async Task<FeeResponseModel> getFee(FeeFilterModel filter)
     {
       try
       {
@@ -124,19 +124,9 @@ namespace GhtkCore.Services.Ghtk
         var httpResp = await _httpClient.GetAsync(url);
         var parsed = await httpResp.Content.ReadAsStringAsync();
         var resp = JsonConvert.DeserializeObject<FeeResponseModel>(parsed);
-
-        if (!resp.success)
-        {
-          var errResp = resp.generateErrorResponse();
-
-          return errResp;
-        }
         #endregion
 
-        // Tổng hợp dữ liệu
-        var succesResp = resp.generateSuccessResponse();
-
-        return succesResp;
+        return resp;
       }
       catch (Exception ex)
       {
