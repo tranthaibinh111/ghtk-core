@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="1" xml:space="preserve">
+    <value>Dễ vỡ</value>
+    <comment>Những mặt hàng bằng chất liệu dễ bị hư hỏng, đổ vỡ trong quá trình vận chuyển. Phụ phí hàng dễ vỡ bằng 20% tổng phí dịch vụ (phí ship + phí bảo hiểm nếu có). Nếu có hư hại, GHTK sẽ chịu toàn bộ trách nhiệm với đơn hàng được tích Dễ vỡ.</comment>
+  </data>
+  <data name="7" xml:space="preserve">
+    <value>Nông sản/thực phẩm khô</value>
+    <comment>Mặt hàng thực phẩm khô (không yêu cầu điều kiện bảo quản đặc biệt), phụ phí 10% tổng phí dịch vụ (phí ship + bảo hiểm nếu có). Đối với hàng thực phẩm khô có hạn sử dụng ngắn (&lt;30 ngày), thời gian hẹn giao không quá 7 ngày kể từ thời điểm lấy hàng thành công. Quá thời hạn trên, đơn hàng sẽ không được tự động lưu kho, GHTK sẽ trả lại hàng về shop.</comment>
+  </data>
+  <data name="10" xml:space="preserve">
+    <value>Cho xem hàng</value>
+    <comment>Khách hàng được xem sản phẩm trước khi nhận hàng</comment>
+  </data>
+  <data name="11" xml:space="preserve">
+    <value>Cho thử hàng/ đồng kiểm</value>
+    <comment>Hỗ trợ người nhận kiểm đếm số lượng hoặc kiểm tra tình trạng của từng sản phẩm (không bao gồm mở niêm phong của sản phẩm), phụ phí 2,000đ/ đơn hàng.</comment>
+  </data>
+  <data name="13" xml:space="preserve">
+    <value>Gọi shop khi khách không nhận hàng, không liên lạc được, sai thông tin</value>
+    <comment>Nhân viên GHTK sẽ liên hệ với shop nếu gặp vấn đề như: sai thông tin người nhận, không liên lạc được, KH từ chối nhận hàng</comment>
+  </data>
+  <data name="17" xml:space="preserve">
+    <value>Giao hàng 1 phần chọn sản phẩm</value>
+    <comment>Hỗ trợ khách chỉ nhận và trả tiền 1 phần hàng. Phần còn lại sẽ được trả về shop với mức phí nội tỉnh = 5.000đ/đơn, liên tỉnh = 50% phí ship</comment>
+  </data>
+  <data name="18" xml:space="preserve">
+    <value>Giao hàng 1 phần đổi trả hàng</value>
+    <comment>Hỗ trợ giao 1 sản phẩm đến cho KH và mang phần hàng còn lại về cho shop. Phần hàng mang về được xem như đơn hàng trả với mức phí nội tỉnh = 5.000đ/đơn, liên tỉnh = 50% phí ship</comment>
+  </data>
+  <data name="19" xml:space="preserve">
+    <value>Không giao được thu</value>
+    <comment>Hỗ trợ KH không nhận sản phẩm nhưng thu một phần phí cho shop. Phí cần thu mặc định bằng phí ship, shop có thể sửa giá trị tiền cần thu theo mong muốn của mình. Phần hàng mang về cho shop được xem như đơn hàng trả với mức phí nội tỉnh = 5.000đ/đơn, liên tỉnh = 50% phí ship  Lưu ý: Đối tác cần truyền thêm trường not_delivered_fee với giá trị 0 &lt; not_delivered_fee &lt;= 20,000,000đ</comment>
+  </data>
+  <data name="20" xml:space="preserve">
+    <value>Hàng nguyên hộp</value>
+    <comment>Mặt hàng được đóng hộp của nhà sản xuất, yêu cầu được bảo quản nguyên vẹn trong quá trình vận chuyển, phụ phí 1,000đ/ đơn hàng.</comment>
+  </data>
+  <data name="22" xml:space="preserve">
+    <value>Thư tín, tài liệu</value>
+    <comment>Hồ sơ, tài liệu, thư từ được đóng gói cẩn thận để không làm hư hại sản phẩm</comment>
+  </data>
+</root>

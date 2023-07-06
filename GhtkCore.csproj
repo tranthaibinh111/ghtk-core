@@ -18,9 +18,7 @@
     <Folder Include="Interfaces\Models\" />
     <Folder Include="Interfaces\Models\Common\" />
     <Folder Include="Interfaces\Services\" />
-    <Folder Include="Models\" />
     <Folder Include="Models\Common\" />
-    <Folder Include="Models\Ghtk\" />
     <Folder Include="Models\Ghtk\Fee\" />
     <Folder Include="Models\Ghtk\Fee\Filter\" />
     <Folder Include="Models\Ghtk\Fee\Get\" />
@@ -32,8 +30,45 @@
     <Folder Include="Services\Ghtk\" />
     <Folder Include="Utils\" />
     <Folder Include="Models\Common\Response\" />
+    <Folder Include="Models\Ghtk\Order\" />
+    <Folder Include="Models\Ghtk\Order\Creation\" />
+    <Folder Include="Models\Ghtk\Product\" />
+    <Folder Include="Models\Ghtk\Product\Creation\" />
+    <Folder Include="Models\Ghtk\Delivery\Get\" />
+    <Folder Include="Models\Ghtk\Product\Get\" />
+    <Folder Include="Interfaces\Models\Ghtk\" />
+    <Folder Include="Interfaces\Models\Ghtk\Delivery\" />
+    <Folder Include="Interfaces\Models\Ghtk\Delivery\Creation\" />
+    <Folder Include="Interfaces\Models\Ghtk\Product\" />
+    <Folder Include="Interfaces\Models\Ghtk\Product\Creation\" />
+    <Folder Include="Interfaces\Models\Ghtk\Order\" />
+    <Folder Include="Interfaces\Models\Ghtk\Order\Creation\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\Common\Response\" />
+    <None Remove="Models\Ghtk\Order\" />
+    <None Remove="Models\Ghtk\Order\Creation\" />
+    <None Remove="Models\Ghtk\Product\" />
+    <None Remove="Models\Ghtk\Product\Creation\" />
+    <None Remove="Models\Ghtk\Delivery\Get\" />
+    <None Remove="Models\Ghtk\Product\Get\" />
+    <None Remove="Interfaces\Models\Ghtk\" />
+    <None Remove="Interfaces\Models\Ghtk\Delivery\" />
+    <None Remove="Interfaces\Models\Ghtk\Delivery\Creation\" />
+    <None Remove="Interfaces\Models\Ghtk\Product\" />
+    <None Remove="Interfaces\Models\Ghtk\Product\Creation\" />
+    <None Remove="Interfaces\Models\Ghtk\Order\" />
+    <None Remove="Interfaces\Models\Ghtk\Order\Creation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Tags.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Tags.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Tags.Designer.cs">
+      <DependentUpon>Tags.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

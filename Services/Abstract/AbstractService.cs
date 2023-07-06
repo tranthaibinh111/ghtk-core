@@ -1,13 +1,10 @@
 #region DotNet
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Net.Http;
 #endregion
 
 #region Interfaces
 using GhtkCore.Interfaces.Services;
-using GhtkCore.Models.Common;
 #endregion
 
 namespace GhtkCore.Services.Abstract
@@ -49,12 +46,14 @@ namespace GhtkCore.Services.Abstract
 
       // HTTP Client
       _httpClient = new HttpClient();
+
+      // Base Address
+      _httpClient.BaseAddress = new Uri(domain);
     }
 
     ~AbstractGhtkService()
     {
-      if (_httpClient != null)
-        _httpClient.Dispose();
+      _httpClient?.Dispose();
     }
 
     #region Protected

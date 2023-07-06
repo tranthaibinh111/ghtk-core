@@ -1,6 +1,5 @@
 #region DotNet
 using System;
-using System.Collections.Generic;
 #endregion
 
 #region Common
@@ -17,7 +16,7 @@ namespace GhtkCore.Models.Common
 {
   /// <summary>
   /// Error Response
-  /// { 'success': true, 'message': '' }
+  /// { 'success': false, 'message': '' }
   /// </summary>
   public class ErrorModel : IResponseModel
   {
@@ -34,6 +33,32 @@ namespace GhtkCore.Models.Common
     {
       success = false;
       this.message = message;
+    }
+  }
+
+  /// <summary>
+  /// Validation Response
+  /// { 'success': false, 'message': '', 'error': {}}
+  /// </summary>
+  public class ErrorModel<T> : ErrorModel
+  {
+    public T error { get; set; }
+
+    public ErrorModel() : base() {}
+
+    public ErrorModel(string message) : base(message) { }
+
+    public ErrorModel(T error)
+    {
+      success = false;
+      this.error = error;
+    }
+
+    public ErrorModel(string message, T error)
+    {
+      success = false;
+      this.message = message;
+      this.error = error;
     }
   }
 }
