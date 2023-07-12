@@ -38,6 +38,9 @@
     <Folder Include="Interfaces\Models\Ghtk\Product\Creation\" />
     <Folder Include="Interfaces\Models\Ghtk\Order\" />
     <Folder Include="Interfaces\Models\Ghtk\Order\Creation\" />
+    <Folder Include="Models\Ghtk\PostOffice\" />
+    <Folder Include="Models\Ghtk\PostOffice\Get\" />
+    <Folder Include="Models\Ghtk\PostOffice\Filter\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\Common\Response\" />
@@ -54,6 +57,9 @@
     <None Remove="Interfaces\Models\Ghtk\Product\Creation\" />
     <None Remove="Interfaces\Models\Ghtk\Order\" />
     <None Remove="Interfaces\Models\Ghtk\Order\Creation\" />
+    <None Remove="Models\Ghtk\PostOffice\" />
+    <None Remove="Models\Ghtk\PostOffice\Get\" />
+    <None Remove="Models\Ghtk\PostOffice\Filter\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Tags.resx">
