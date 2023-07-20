@@ -41,6 +41,8 @@
     <Folder Include="Models\Ghtk\PostOffice\" />
     <Folder Include="Models\Ghtk\PostOffice\Get\" />
     <Folder Include="Models\Ghtk\PostOffice\Filter\" />
+    <Folder Include="Enumerates\" />
+    <Folder Include="Enumerates\Ghtk\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\Common\Response\" />
@@ -60,6 +62,8 @@
     <None Remove="Models\Ghtk\PostOffice\" />
     <None Remove="Models\Ghtk\PostOffice\Get\" />
     <None Remove="Models\Ghtk\PostOffice\Filter\" />
+    <None Remove="Enumerates\" />
+    <None Remove="Enumerates\Ghtk\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Tags.resx">
