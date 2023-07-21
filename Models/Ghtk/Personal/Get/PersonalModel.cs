@@ -2,11 +2,6 @@
 using AutoMapper;
 #endregion
 
-#region GHTK
-// Paramters
-using GhtkCore.Models.Ghtk;
-#endregion
-
 namespace GhtkCore.Models.Ghtk
 {
   public class PersonalModel

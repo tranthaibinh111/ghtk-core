@@ -1,6 +1,6 @@
 namespace GhtkCore.Enumerates.Ghtk
 {
-  public class PickOptionEnum
+  public class PickEnum
   {
     /// <summary>
     /// Lấy hàng tại shop

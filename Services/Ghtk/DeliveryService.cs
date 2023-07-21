@@ -46,7 +46,8 @@ namespace GhtkCore.Services.Ghtk
     /// <returns></returns>
     public async Task<DeliveryResponseModel> registerDelivery(
       OrderCreationModel order,
-      IList<ProductCreationModel> products
+      IList<ProductCreationModel> products,
+      bool isFirst = true
     )
     {
       try
@@ -86,6 +87,19 @@ namespace GhtkCore.Services.Ghtk
         var parsed = await httpResp.Content.ReadAsStringAsync();
         var resp = JsonConvert.DeserializeObject<DeliveryResponseModel>(parsed);
         #endregion
+
+        // Fix bug: Trường hợp tồn tại mã đơn hàng trên hệ thống
+        if (!resp.success && resp.error != null)
+        {
+          var errCode = resp.error.code;
+
+          if (errCode == "ORDER_ID_EXIST" && isFirst)
+          {
+            order.id = $"{order.id}_{DateTime.Now:yyyyMMddHHmmss}";
+
+            return await registerDelivery(order, products, isFirst = false);
+          }
+        }
 
         return resp;
       }

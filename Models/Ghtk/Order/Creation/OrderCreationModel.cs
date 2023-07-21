@@ -10,6 +10,9 @@ using AutoMapper;
 #endregion
 
 #region GHTK
+// Enumerates
+using GhtkCore.Enumerates.Ghtk;
+
 // Interface
 using GhtkCore.Interfaces.Models.Ghtk;
 #endregion
@@ -41,7 +44,7 @@ namespace GhtkCore.Models.Ghtk
     /// <br />
     /// Số tiền CoD. Nếu bằng 0 thì không thu tiền CoD. Tính theo VNĐ
     /// </summary>
-    public int? pickMoney { get; set; }
+    public int pickMoney { get; set; }
     /// <summary>
     /// Requirement: False<br />
     /// <br />
@@ -247,6 +250,8 @@ namespace GhtkCore.Models.Ghtk
 
     #region Các thông tin thêm
     /// <summary>
+    /// Requirement: False
+    /// <br />
     /// Freeship cho người nhận hàng.<br/>
     /// Nếu bằng 1 COD sẽ chỉ thu người nhận hàng số tiền bằng pick_money.<br/>
     /// Nếu bằng 0 COD sẽ thu tiền người nhận số tiền bằng pick_money + phí ship của đơn hàng.<br/>
@@ -255,6 +260,8 @@ namespace GhtkCore.Models.Ghtk
     /// </summary>
     public int? isFreeship { get; set; } = 0;
     /// <summary>
+    /// Requirement: False
+    /// <br />
     /// Đơn vị khối lượng của các sản phẩm có trong gói hàng<br/>
     /// Nhận một trong hai giá trị gram và kilogram.<br/>
     /// <br/>
@@ -311,9 +318,11 @@ namespace GhtkCore.Models.Ghtk
     /// </summary>
     public string expired { get; set; }
     /// <summary>
+    /// Requirement: True<br />
+    /// <br />
     /// Giá trị đóng bảo hiểm, là căn cứ để tính phí bảo hiểm và bồi thường khi có sự cố.
     /// </summary>
-    public int? value { get; set; }
+    public int value { get; set; }
     /// <summary>
     /// 1. đơn chỉ thu tiền, 0. default
     /// </summary>
@@ -323,14 +332,14 @@ namespace GhtkCore.Models.Ghtk
     /// <br/>
     /// Mặc định là cod, biểu thị lấy hàng bởi COD hoặc Shop sẽ gửi tại bưu cục.
     /// </summary>
-    public string pickOption { get; set; } = "cod";
+    public string pickOption { get; set; } = PickEnum.Shop;
     /// <summary>
     /// Trường này lưu đường vận chuyển của đơn hàng<br/>
     /// Nếu đơn hàng được chuyển bằng đường bộ (road), bạn sẽ nhận được thông báo của GHTK.<br/>
     /// <br/>
     /// Mặc định là đường bay (fly).
     /// </summary>
-    public string actualTransferMethod { get; set; } = "fly";
+    public string actualTransferMethod { get; set; } = TransportEnum.Fly;
     /// <summary>
     /// Phương thức vận chuyển road ( bộ ) , fly (bay).<br/>
     /// Nếu phương thức vận chuyển không hợp lệ thì GHTK sẽ tự động nhảy về PTVC mặc định
@@ -439,7 +448,11 @@ namespace GhtkCore.Models.Ghtk
         ///
         /// Update Version 1.5.4
         /// Trường hợp một số địa chỉ cấp độ 4 không có trường hợp "Khác"
-        data.hamlet = otherAddress;
+        if (String.IsNullOrEmpty(hamlet))
+          data.hamlet = otherAddress;
+        else
+          data.hamlet = hamlet;
+
         // Số điện thoại người nhận hàng hóa
         data.tel = tel;
 
@@ -536,8 +549,7 @@ namespace GhtkCore.Models.Ghtk
           data.expired = expired;
 
         // Giá trị đóng bảo hiểm
-        if (value.HasValue)
-          data.value = value;
+        data.value = value;
 
         // Đơn có thu tiền hay không
         data.opm = opm;
@@ -608,13 +620,18 @@ namespace GhtkCore.Models.Ghtk
       if (!result.opm.HasValue)
         result.opm = 0;
 
-      // Lấy hàng bởi COD hoặc Shop sẽ gửi tại bưu cục
+      // Địa điểm lấy hàng
       if (String.IsNullOrEmpty(result.pickOption))
-        result.pickOption = "cod";
+        result.pickOption = PickEnum.Shop;
 
       // Lưu đường vận chuyển của đơn hàng
       if (String.IsNullOrEmpty(result.actualTransferMethod))
-        result.actualTransferMethod = "fly";
+      {
+        if (!String.IsNullOrEmpty(result.transport))
+          result.actualTransferMethod = result.transport;
+        else
+          result.actualTransferMethod = TransportEnum.Fly;
+      }
       #endregion
 
       return result;
