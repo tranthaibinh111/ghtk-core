@@ -558,7 +558,10 @@ namespace GhtkCore.Models.Ghtk
         data.pick_option = pickOption;
 
         // Lưu đường vận chuyển của đơn hàng
-        data.actual_transfer_method = actualTransferMethod;
+        if (!String.IsNullOrEmpty(transport))
+          data.actual_transfer_method = transport;
+        else
+          data.actual_transfer_method = actualTransferMethod;
 
         // Phương thức vận chuyển
         if (!String.IsNullOrEmpty(transport))

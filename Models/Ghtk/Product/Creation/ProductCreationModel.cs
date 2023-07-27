@@ -18,7 +18,7 @@ namespace GhtkCore.Models.Ghtk
   /// https://docs.giaohangtietkiem.vn/?http#ng-n-h-ng
   /// Tham số khởi tạo đơn giao hàng tiết kiệm
   /// </summary>
-  public class ProductCreationModel: IOrderCreationModel
+  public class ProductCreationModel: IProductCreationModel
   {
     /// <summary>
     /// Requirement: True
