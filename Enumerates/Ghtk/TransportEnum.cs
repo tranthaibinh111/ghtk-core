@@ -5,7 +5,7 @@ namespace GhtkCore.Enumerates.Ghtk
     /// <summary>
     /// Phương thức vâng chuyển bộ
     /// </summary>
-    public const string Road = "cod";
+    public const string Road = "road";
     /// <summary>
     /// Phương thức vâng chuyển bay
     /// </summary>
