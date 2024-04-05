@@ -549,7 +549,8 @@ namespace GhtkCore.Models.Ghtk
           data.expired = expired;
 
         // Giá trị đóng bảo hiểm
-        data.value = value;
+        // Fix bug: GHTK chưa hỗ trợ giao hàng EXPRESS có giá trị hàng hóa khác 1 đ <= GTHH <= 20,000,000 đ. Mong quý khách thông cảm!.
+        data.value = value > 0 ? value : 1;
 
         // Đơn có thu tiền hay không
         data.opm = opm;
