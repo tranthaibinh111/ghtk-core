@@ -21,9 +21,7 @@
     <Folder Include="Models\Ghtk\Personal\" />
     <Folder Include="Models\Ghtk\Personal\Get\" />
     <Folder Include="Models\Ghtk\Personal\Filter\" />
-    <Folder Include="Services\" />
     <Folder Include="Services\Abstract\" />
-    <Folder Include="Services\Ghtk\" />
     <Folder Include="Utils\" />
     <Folder Include="Models\Ghtk\Order\" />
     <Folder Include="Models\Ghtk\Order\Creation\" />

@@ -28,12 +28,11 @@ using GhtkCore.Models.Ghtk;
 
 // Service
 using GhtkCore.Services.Abstract;
-using System.Reflection.Metadata;
 #endregion
 
 namespace GhtkCore.Services.Ghtk
 {
-  public class DeliveryService : AbstractGhtkService
+  public sealed class DeliveryService : AbstractGhtkService
   {
     public DeliveryService(string token) : base(token) { }
 

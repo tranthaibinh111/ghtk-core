@@ -1,23 +1,13 @@
 #region DotNet
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
 #endregion
 
 #region Package (third-party)
 using Newtonsoft.Json;
-#endregion
-
-#region Utils
-using GhtkCore.Utils;
-#endregion
-
-#region Common
-// Interfaces
-using GhtkCore.Interfaces.Models.Common;
-
-// Models
-using GhtkCore.Models.Common;
 #endregion
 
 #region GHTK
@@ -28,19 +18,20 @@ using GhtkCore.Models.Ghtk;
 using GhtkCore.Services.Abstract;
 #endregion
 
+
 namespace GhtkCore.Services.Ghtk
 {
-  public sealed class FeeService : AbstractGhtkService
+  public sealed class AddressService : AbstractGhtkService
   {
-    public FeeService(string token): base(token) {}
-    
+    public AddressService(string token) : base(token) { }
+
     #region Public
     /// <summary>
-    /// https://docs.giaohangtietkiem.vn/?http#t-nh-ph-v-n-chuy-n
+    /// https://docs.giaohangtietkiem.vn/#l-y-danh-sa-ch-i-a-chi-c-p-4
     /// </summary>
     /// <param name="filter"></param>
     /// <returns></returns>
-    public async Task<FeeResponseModel> getFee(FeeFilterModel filter)
+    public async Task<FeeResponseModel> getAddressLevel4(Address4FilterModel filter)
     {
       try
       {
@@ -138,4 +129,3 @@ namespace GhtkCore.Services.Ghtk
     #endregion
   }
 }
-
