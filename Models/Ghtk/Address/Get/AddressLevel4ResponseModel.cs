@@ -1,5 +1,9 @@
 #region DotNet
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 #endregion
 
 #region Package (third-party)
@@ -16,10 +20,8 @@ using GhtkCore.Models.Common;
 
 namespace GhtkCore.Models.Ghtk
 {
-  public class FeeResponseModel : ResponseModel, ISuccessResponse<FeeModel>, IErrorResponse
+  public class AddressLevel4ResponseModel : ResponseModel, ISuccessResponse<IList<string>>, IErrorResponse
   {
-    [JsonProperty(PropertyName = "fee")]
-    public FeeModel data { get; set; }
+    public IList<string> data { get; set; }
   }
 }
-

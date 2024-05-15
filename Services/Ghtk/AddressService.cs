@@ -10,6 +10,10 @@ using System.Net.Http;
 using Newtonsoft.Json;
 #endregion
 
+#region Utils
+using GhtkCore.Utils;
+#endregion
+
 #region GHTK
 // Models
 using GhtkCore.Models.Ghtk;
@@ -31,7 +35,7 @@ namespace GhtkCore.Services.Ghtk
     /// </summary>
     /// <param name="filter"></param>
     /// <returns></returns>
-    public async Task<FeeResponseModel> getAddressLevel4(Address4FilterModel filter)
+    public async Task<AddressLevel4ResponseModel> getAddressLevel4(AddressLevel4FilterModel filter)
     {
       try
       {
@@ -40,70 +44,19 @@ namespace GhtkCore.Services.Ghtk
         setHeaders();
 
         #region Thiết lập URL
-        var url = "/services/shipment/fee";
+        var url = "/services/address/getAddressLevel4";
 
         #region Query Parameters
         var query = new Dictionary<string, dynamic>();
 
-        #region Thông tin lấy hàng
-        // Địa điểm lấy hàng của shop trong trang quản lý đơn hàng dành cho khách hàng
-        if (!String.IsNullOrEmpty(filter.pickAddressId))
-          query.Add("pick_address_id", filter.pickAddressId);
-
-        // Địa chỉ ngắn gọn để lấy nhận hàng hóa
-        if (!String.IsNullOrEmpty(filter.pickAddress))
-          query.Add("pick_address", Uri.EscapeDataString(filter.pickAddress));
-
-        // Tên tỉnh/thành phố nơi lấy hàng hóa
-        query.Add("pick_province", Uri.EscapeDataString(filter.pickProvince));
-
-        // Tên quận/huyện nơi lấy hàng hóa
-        query.Add("pick_district", Uri.EscapeDataString(filter.pickDistrict));
-
-        // Tên phường/xã nơi lấy hàng hóa
-        if (!String.IsNullOrEmpty(filter.pickWard))
-          query.Add("pick_ward", Uri.EscapeDataString(filter.pickWard));
-
-        // Tên đường/phố nơi lấy hàng hóa
-        if (!String.IsNullOrEmpty(filter.pickStreet))
-          query.Add("pick_street", Uri.EscapeDataString(filter.pickStreet));
-        #endregion
-
-        #region Thông tin điểm giao hàng
-        // Địa chỉ chi tiết của người nhận hàng
-        if (!String.IsNullOrEmpty(filter.address))
-          query.Add("address", Uri.EscapeDataString(filter.address));
-
-        // Tên tỉnh/thành phố của người nhận hàng hóa
+        // Tên tỉnh/thành phố cần lấy danh sách địa chỉ cấp 4
         query.Add("province", Uri.EscapeDataString(filter.province));
 
-        // Tên quận/huyện của người nhận hàng hóa
+        // Tên quận/huyện cần lấy danh sách địa chỉ cấp 4
         query.Add("district", Uri.EscapeDataString(filter.district));
 
-        // Tên phường/xã của người nhận hàng hóa
-        if (!String.IsNullOrEmpty(filter.ward))
-          query.Add("ward", Uri.EscapeDataString(filter.ward));
-
-        // Tên đường/phố của người nhận hàng hóa
-        if (!String.IsNullOrEmpty(filter.street) && filter.street != filter.address)
-          query.Add("street", Uri.EscapeDataString(filter.street));
-        #endregion
-
-        #region Các thông tin thêm
-        // Cân nặng của gói hàng
-        query.Add("weight", filter.weight);
-
-        // Giá trị thực của đơn hàng áp dụng để tính phí bảo hiểm, đơn vị sử dụng
-        if (filter.value.HasValue)
-          query.Add("value", filter.value.Value);
-
-        // Phương thức vâng chuyển
-        if (!String.IsNullOrEmpty(filter.transport))
-          query.Add("transport", filter.transport);
-
-        // Phương thức vận chuyển xfast
-        query.Add("deliver_option", filter.deliverOption);
-        #endregion
+        // Tên đường/phường cần lấy danh sách địa chỉ cấp 4
+        query.Add("ward_street", Uri.EscapeDataString(filter.ward));
 
         if (query.Count > 0)
           url += $"?{QueryHelpers.stringify(query)}";
@@ -114,7 +67,7 @@ namespace GhtkCore.Services.Ghtk
         #region Thực thi API Giao Hàng Tiết Kiệm
         var httpResp = await _httpClient.GetAsync(url);
         var parsed = await httpResp.Content.ReadAsStringAsync();
-        var resp = JsonConvert.DeserializeObject<FeeResponseModel>(parsed);
+        var resp = JsonConvert.DeserializeObject<AddressLevel4ResponseModel>(parsed);
         #endregion
 
         return resp;
