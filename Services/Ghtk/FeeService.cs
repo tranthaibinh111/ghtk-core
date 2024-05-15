@@ -30,7 +30,7 @@ using GhtkCore.Services.Abstract;
 
 namespace GhtkCore.Services.Ghtk
 {
-  public sealed class FeeService: AbstractGhtkService
+  public sealed class FeeService : AbstractGhtkService
   {
     public FeeService(string token): base(token) {}
     
