@@ -23,22 +23,13 @@ jobs:
         dotnet-version: 6.0.x
 
     - name: Add GitHub Packages source
-      run: |
-        dotnet nuget add source \
-          --username ${{ github.actor }} \
-          --password ${{ secrets.GH_PAT }} \
-          --store-password-in-clear-text \
-          --name github \
-          https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+      run: bash ShellScripts/AddNugetConfiguration.sh -t ${{ secrets.GH_PAT }}
 
     - name: Restore dependencies
-      run: dotnet restore
-
-    - name: Build project
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet restore -r linux-x64
 
     - name: Pack the NuGet package
-      run: dotnet pack --configuration Release --no-build --output ./nupkg
+      run: dotnet pack -c Release --no-restore --runtime linux-x64  --output ./nupkg
 
     - name: Push the package to GitHub Packages
       run: dotnet nuget push ./nupkg/*.nupkg \

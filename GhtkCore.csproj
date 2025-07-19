@@ -7,7 +7,7 @@
 
     <!-- GitHub Package Metadata -->
     <PackageId>GhtkCore</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Binh Tran</Authors>
     <PackageDescription>A great library for GHTK</PackageDescription>
     <RepositoryUrl>https://github.com/tranthaibinh111/ghtk-core</RepositoryUrl>
