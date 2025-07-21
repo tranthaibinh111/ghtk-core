@@ -3,11 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>GhtkCore</RootNamespace>
-    <UserSecretsId>78383b08-f1fe-4786-bbb0-647120662807</UserSecretsId>
 
     <!-- GitHub Package Metadata -->
     <PackageId>GhtkCore</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Binh Tran</Authors>
     <PackageDescription>A great library for GHTK</PackageDescription>
     <RepositoryUrl>https://github.com/tranthaibinh111/ghtk-core</RepositoryUrl>
